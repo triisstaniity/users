@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    // $users = DB::table('users')->get();
+
+    $users = App\Users::all();
+    // return view('welcome');
+    return view('users', compact ('user'));
+
+
+});
+
+Route::get('/user/create', function () {
+    // return view('welcome');
+    return view('create');
 });
