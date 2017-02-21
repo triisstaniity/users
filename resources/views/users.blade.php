@@ -1,16 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
+<div class="container">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="table-responsive">
                     <table class="table">
 
-                        {{-- @foreach ($users as $user)
-                            <td>{{$user->member}}</td> --}}
-
-                        {{-- @endforeach --}}
                         <tr><td>ID</td>
                             <td>FULLNAME</td>
                             <td>EMAIL ADDRESS</td>
@@ -54,4 +52,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

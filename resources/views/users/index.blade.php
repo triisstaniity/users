@@ -1,38 +1,33 @@
 @extends('layouts.master')
 
-@section('layouts.body')
+@section('content')
+<h1>Users</h1>
 
+
+<div class="container">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="table-responsive">
                     <table class="table">
 
-                        {{-- @foreach ($users as $user)
-                        <td>{{$user->member}}</td> --}}
-
-                        {{-- @endforeach --}}
-                        <tr><td>ID</td>
-                            <td>FULLNAME</td>
-                            <td>EMAIL ADDRESS</td>
-                            <td>CONTACT NUMBER</td>
-                            <td>ACTIONS</td>
+                        <tr><th>ID</th>
+                            <th>FULLNAME</th>
+                            <th>EMAIL ADDRESS</th>
+                            <th>CONTACT NUMBER</th>
+                            <th>ACTIONS</th>
                         </tr>
-                        <tr><td>#</td>
-                            <td>John Doe</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>00-100-999</td>
+                        @foreach ($users as $user)
+                        <tr><td>{{$user->id}}</td>
+                            <td>{{$user->fullname}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->contact}}</td>
                             <td>EDIT DELETE</td>
                         </tr>
-                        <tr><td>#</td>
-                            <td>John Doe</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>00-100-999</td>
-                            <td>EDIT DELETE</td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
-                <div><a href="user/create">Create User</a></div>
+                <!-- <div><a href="user/create">Create User</a></div>
                 <div align="right"><nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li>
@@ -51,8 +46,9 @@
                             </a>
                         </li>
                     </ul>
-                </nav></div>
+                </nav></div> -->
             </div>
         </div>
     </div>
-@endsection
+</div>
+@stop
