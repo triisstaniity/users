@@ -19,32 +19,41 @@ class UsersController extends Controller
         // return view('users.index')->with('users', $users);
     }
 
-    public function create(Request $request)
+    public function create(){
+
+        return view('create');
+
+    }
+
+    public function store(Request $request)
     {
 
-        $request->get('fullname');
-        $request->get('email');
-        $request->get('contact');
-        $request->get('id');
-
-        $users=DB::table('users')->get();
         User::create([
             'fullname' => $request->get('fullname'),
             'email' => $request->get('email'),
             'contact' => $request->get('contact'),
             'id' => $request->get('id')
         ]);
-        // $users = User::all();
+
         return back();
-        // return view('users.index', $users);
-        // return view('users.index')->with('users', $users);
     }
 
-    public function destroy($users)
+    public function show($id) {
+
+        $user = User::findOrFail($id);
+
+        return view('users.user', compact ('user'));
+
+    }
+
+    public function destroy(Request $request,$user)
     {
-        $users = DB::table('users');
+
+        $users = User::findOrFail($user);
         $users->delete();
 
-        return Redirect::route('users.index');
+        return back()->with([
+            'status' => 'User deleted successfully'
+        ]);
     }
 }

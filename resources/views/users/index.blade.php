@@ -1,13 +1,21 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Users</h1>
-
 
 <div class="container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-sm-offset-2">
+                <h1 align="right">Users Account</h1>
+
+                @if(session('status'))
+                <ul>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                </ul>
+                @endif
+
                 <div class="table-responsive">
                     <table class="table">
 
@@ -15,38 +23,22 @@
                             <th>FULLNAME</th>
                             <th>EMAIL ADDRESS</th>
                             <th>CONTACT NUMBER</th>
-                            <th>ACTIONS</th>
+                            <th colspan="2" align="center">ACTIONS</th>
                         </tr>
                         @foreach ($users as $user)
-                        <tr><td>{{$user->id}}</td>
-                            <td>{{$user->fullname}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->contact}}</td>
-                            <td>EDIT DELETE</td>
+                        <tr><td>{{ $user->id }}</td>
+                            <td>{{ $user->fullname }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->contact }}</td>
+                            <td><input class="btn btn-primary" type="submit" value="Edit"></td>
+                            <td>
+                                <a href="{{ url('user/' . $user->id . '/delete') }}" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                <!-- <div><a href="user/create">Create User</a></div>
-                <div align="right"><nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav></div> -->
+                <a href="users/create">Create User</a>
             </div>
         </div>
     </div>

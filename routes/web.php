@@ -11,22 +11,13 @@
 |
 */
 
-Route::get('/users', function () {
 
-    // $users = DB::table('users')->get();
+Route::get('user/{id}', 'UsersController@show');
 
-    $users = App\Users::all();
-    // return view('welcome');
-    return view('users', compact ('user'));
-
-
-});
-
-Route::get('/users/create', function () {
-    // return view('welcome');
-    return view('create');
-});
+Route::get('/users/create',  'UsersController@create');
 
 Route::get('users', 'UsersController@index');
 
-Route::post('users', 'UsersController@create');
+Route::post('users', 'UsersController@store');
+
+Route::get('user/{user}/delete', 'UsersController@destroy');
