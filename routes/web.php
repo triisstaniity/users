@@ -21,3 +21,5 @@ Route::get('users', 'UsersController@index');
 Route::post('users', 'UsersController@store');
 
 Route::get('user/{user}/delete', 'UsersController@destroy');
+
+Route::get('user/{user}/edit', 'UsersController@edit');

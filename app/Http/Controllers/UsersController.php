@@ -35,7 +35,9 @@ class UsersController extends Controller
             'id' => $request->get('id')
         ]);
 
-        return back();
+        return back()->with([
+            'status' => 'User created successfully'
+        ]);
     }
 
     public function show($id) {
@@ -55,5 +57,13 @@ class UsersController extends Controller
         return back()->with([
             'status' => 'User deleted successfully'
         ]);
+    }
+
+    public function edit($id){
+
+        $user = User::findOrFail($id);
+
+        return view('users.edit', compact('user'));
+
     }
 }
